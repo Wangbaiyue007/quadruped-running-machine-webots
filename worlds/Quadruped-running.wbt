@@ -1,0 +1,596 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  basicTimeStep 2
+}
+Viewpoint {
+  orientation -0.1574493958204463 -0.9819264924554794 -0.10502405043539105 1.4960203704164532
+  position -6.610672476637569 3.0609847282265377 1.0462581838095462
+  follow "body"
+}
+TexturedBackgroundLight {
+}
+TexturedBackground {
+}
+Floor {
+  size 50 50
+  appearance ChequeredParquetry {
+    textureTransform TextureTransform {
+    }
+    IBLStrength 2
+  }
+}
+Robot {
+  translation 0 1.4 0
+  children [
+    DEF leg_1 Hinge2Joint {
+      jointParameters HingeJointParameters {
+        anchor 0.45 0 0.2
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        PositionSensor {
+          name "leg_1_rmotor_x_sensor"
+        }
+        DEF leg_1_rmotor_x RotationalMotor {
+          name "leg_1_rmotor_x"
+          maxTorque 1000
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "leg_1_rmotor_z_sensor"
+        }
+        DEF leg_1_rmotor_z RotationalMotor {
+          name "leg_1_rmotor_z"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation 0.45 0 0.2
+        children [
+          DEF leg_1_linear_motor SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+              minStop -0.5
+              dampingConstant 30
+              staticFriction 0.2
+            }
+            device [
+              PositionSensor {
+                name "leg_1_linear_motor_p_sensor"
+              }
+              DEF leg_1_linear_motor LinearMotor {
+                name "leg_1_linear_motor"
+                maxForce 2000
+              }
+            ]
+            endPoint Solid {
+              children [
+                DEF inleg_1 Transform {
+                  translation 0 -0.08 0
+                  children [
+                    DEF leg_1 TouchSensor {
+                      translation 0 -0.6 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 0 0
+                            metalness 0
+                          }
+                          geometry Sphere {
+                            radius 0.03
+                          }
+                        }
+                      ]
+                      name "touch sensor 1"
+                      boundingObject Sphere {
+                        radius 0.03
+                      }
+                      physics Physics {
+                      }
+                    }
+                    DEF inleg_1 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry DEF inleg_1 Cylinder {
+                        height 1.18
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "solid_1_2"
+              boundingObject Transform {
+                translation 0 -0.08 0
+                children [
+                  USE inleg_1
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 1
+              }
+            }
+          }
+          DEF outleg_1 Transform {
+            translation 0 -0.15 0
+            children [
+              DEF outleg_1 Shape {
+                appearance PBRAppearance {
+                  baseColor 1 1 0
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.6
+                  radius 0.025
+                }
+              }
+            ]
+          }
+          DEF leg_1_rotation_motor Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.045
+            }
+            castShadows FALSE
+          }
+        ]
+        name "solid_1_1"
+        boundingObject Group {
+          children [
+            Transform {
+              translation 0 -0.15 0
+              children [
+                USE outleg_1
+              ]
+            }
+            USE leg_1_rotation_motor
+          ]
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF leg_2 Hinge2Joint {
+      jointParameters HingeJointParameters {
+        anchor -0.45 0 0.2
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        PositionSensor {
+          name "leg_2_rmotor_x_sensor"
+        }
+        DEF leg_2_rmotor_x RotationalMotor {
+          name "leg_2_rmotor_x"
+          maxTorque 1000
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "leg_2_rmotor_z_sensor"
+        }
+        DEF leg_2_rmotor_z RotationalMotor {
+          name "leg_2_rmotor_z"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation -0.45 0 0.2
+        children [
+          DEF leg_2_linear_motor SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+              minStop -0.5
+              dampingConstant 30
+              staticFriction 0.2
+            }
+            device [
+              PositionSensor {
+                name "leg_2_linear_motor_p_sensor"
+              }
+              DEF leg_2_linear_motor LinearMotor {
+                name "leg_2_linear_motor"
+                maxForce 2000
+              }
+            ]
+            endPoint Solid {
+              children [
+                DEF inleg_2 Transform {
+                  translation 0 -0.08 0
+                  children [
+                    DEF leg_2 TouchSensor {
+                      translation 0 -0.6 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 0 0
+                            metalness 0
+                          }
+                          geometry Sphere {
+                            radius 0.03
+                          }
+                        }
+                      ]
+                      name "touch sensor 2"
+                      boundingObject Sphere {
+                        radius 0.03
+                      }
+                      physics Physics {
+                      }
+                    }
+                    DEF inleg_2 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry DEF inleg_1 Cylinder {
+                        height 1.18
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "solid_2_2"
+              boundingObject Transform {
+                translation 0 -0.08 0
+                children [
+                  USE inleg_2
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 1
+              }
+            }
+          }
+          DEF outleg_2 Transform {
+            translation 0 -0.15 0
+            children [
+              DEF outleg_2 Shape {
+                appearance PBRAppearance {
+                  baseColor 1 1 0
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.6
+                  radius 0.025
+                }
+              }
+            ]
+          }
+          DEF leg_2_rotation_motor Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.045
+            }
+            castShadows FALSE
+          }
+        ]
+        name "solid_2_1"
+        boundingObject Group {
+          children [
+            Transform {
+              translation 0 -0.15 0
+              children [
+                USE outleg_2
+              ]
+            }
+            USE leg_2_rotation_motor
+          ]
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF leg_3 Hinge2Joint {
+      jointParameters HingeJointParameters {
+        anchor 0.45 0 -0.2
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        PositionSensor {
+          name "leg_3_rmotor_x_sensor"
+        }
+        DEF leg_3_rmotor_x RotationalMotor {
+          name "leg_3_rmotor_x"
+          maxTorque 1000
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "leg_3_rmotor_z_sensor"
+        }
+        DEF leg_3_rmotor_z RotationalMotor {
+          name "leg_3_rmotor_z"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation 0.45 0 -0.2
+        children [
+          DEF leg_3_linear_motor SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+              minStop -0.5
+              dampingConstant 30
+              staticFriction 0.2
+            }
+            device [
+              PositionSensor {
+                name "leg_3_linear_motor_p_sensor"
+              }
+              DEF leg_3_linear_motor LinearMotor {
+                name "leg_3_linear_motor"
+                maxForce 2000
+              }
+            ]
+            endPoint Solid {
+              children [
+                DEF inleg_3 Transform {
+                  translation 0 -0.08 0
+                  children [
+                    DEF leg_3 TouchSensor {
+                      translation 0 -0.6 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 0 0
+                            metalness 0
+                          }
+                          geometry Sphere {
+                            radius 0.03
+                          }
+                        }
+                      ]
+                      name "touch sensor 3"
+                      boundingObject Sphere {
+                        radius 0.03
+                      }
+                      physics Physics {
+                      }
+                    }
+                    DEF inleg_3 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry DEF inleg_1 Cylinder {
+                        height 1.18
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "solid_3_2"
+              boundingObject Transform {
+                translation 0 -0.08 0
+                children [
+                  USE inleg_3
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 1
+              }
+            }
+          }
+          DEF outleg_3 Transform {
+            translation 0 -0.15 0
+            children [
+              DEF outleg_3 Shape {
+                appearance PBRAppearance {
+                  baseColor 1 1 0
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.6
+                  radius 0.025
+                }
+              }
+            ]
+          }
+          DEF leg_3_rotation_motor Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.045
+            }
+            castShadows FALSE
+          }
+        ]
+        name "solid_3_1"
+        boundingObject Group {
+          children [
+            Transform {
+              translation 0 -0.15 0
+              children [
+                USE outleg_3
+              ]
+            }
+            USE leg_3_rotation_motor
+          ]
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF leg_4 Hinge2Joint {
+      jointParameters HingeJointParameters {
+        anchor -0.45 0 -0.2
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        PositionSensor {
+          name "leg_4_rmotor_x_sensor"
+        }
+        DEF leg_4_rmotor_x RotationalMotor {
+          name "leg_4_rmotor_x"
+          maxTorque 1000
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "leg_4_rmotor_z_sensor"
+        }
+        DEF leg_4_rmotor_z RotationalMotor {
+          name "leg_4_rmotor_z"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation -0.45 0 -0.2
+        children [
+          DEF leg_4_linear_motor SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+              minStop -0.5
+              dampingConstant 30
+              staticFriction 0.2
+            }
+            device [
+              PositionSensor {
+                name "leg_4_linear_motor_p_sensor"
+              }
+              DEF leg_4_linear_motor LinearMotor {
+                name "leg_4_linear_motor"
+                maxForce 2000
+              }
+            ]
+            endPoint Solid {
+              children [
+                DEF inleg_4 Transform {
+                  translation 0 -0.08 0
+                  children [
+                    DEF leg_4 TouchSensor {
+                      translation 0 -0.6 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance {
+                            baseColor 0 0 0
+                            metalness 0
+                          }
+                          geometry Sphere {
+                            radius 0.03
+                          }
+                        }
+                      ]
+                      name "touch sensor 4"
+                      boundingObject Sphere {
+                        radius 0.03
+                      }
+                      physics Physics {
+                      }
+                    }
+                    DEF inleg_4 Shape {
+                      appearance PBRAppearance {
+                        metalness 0
+                      }
+                      geometry DEF inleg_4 Cylinder {
+                        height 1.18
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "solid_4_2"
+              boundingObject Transform {
+                translation 0 -0.08 0
+                children [
+                  USE inleg_4
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 1
+              }
+            }
+          }
+          DEF outleg_4 Transform {
+            translation 0 -0.15 0
+            children [
+              DEF outleg_4 Shape {
+                appearance PBRAppearance {
+                  baseColor 1 1 0
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.6
+                  radius 0.025
+                }
+              }
+            ]
+          }
+          DEF leg_4_rotation_motor Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.045
+            }
+            castShadows FALSE
+          }
+        ]
+        name "solid_4_1"
+        boundingObject Group {
+          children [
+            Transform {
+              translation 0 -0.15 0
+              children [
+                USE outleg_4
+              ]
+            }
+            USE leg_4_rotation_motor
+          ]
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF body Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 1
+        baseColorMap ImageTexture {
+          url [
+            "textures/water.jpg"
+          ]
+        }
+        metalness 0
+      }
+      geometry Box {
+        size 1.05 0.05 0.32
+      }
+      castShadows FALSE
+    }
+    InertialUnit {
+      boundingObject USE body
+      physics Physics {
+        density -1
+        mass 0.5
+      }
+    }
+  ]
+  name "body"
+  model "body"
+  boundingObject USE body
+  physics Physics {
+    density -1
+    mass 50
+  }
+  controller "trot"
+}
