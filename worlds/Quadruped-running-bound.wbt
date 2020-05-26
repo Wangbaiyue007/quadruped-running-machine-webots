@@ -3,8 +3,8 @@ WorldInfo {
   basicTimeStep 2
 }
 Viewpoint {
-  orientation -0.1574493958204463 -0.9819264924554794 -0.10502405043539105 1.4960203704164532
-  position -6.610672476637569 3.0609847282265377 1.0462581838095462
+  orientation -0.22574571765491258 -0.9702434690235451 -0.08755844777990203 0.7605964963696776
+  position -4.352997883360777 2.723811889459892 6.539489853937912
   follow "body"
 }
 TexturedBackgroundLight {
@@ -20,9 +20,10 @@ Floor {
   }
 }
 Robot {
-  translation 0 1.4 0
+  translation 0 0.9 0
+  rotation 0 0 1 0.22
   children [
-      Shape {
+    Shape {
       appearance PBRAppearance {
         baseColorMap ImageTexture {
           url [
@@ -32,7 +33,7 @@ Robot {
         metalness 0
       }
       geometry Box {
-        size 1.051 0.048 0.321
+        size 1.05 0.048 0.321
       }
     }
     DEF leg_1 Hinge2Joint {
@@ -61,12 +62,13 @@ Robot {
       ]
       endPoint Solid {
         translation 0.45 0 0.2
+        rotation 0 0 1 0
         children [
           DEF leg_1_linear_motor SliderJoint {
             jointParameters JointParameters {
               axis 0 1 0
-              minStop -0.5
-              dampingConstant 30
+              minStop -0.2
+              dampingConstant 5
               staticFriction 0.2
             }
             device [
@@ -75,7 +77,7 @@ Robot {
               }
               DEF leg_1_linear_motor LinearMotor {
                 name "leg_1_linear_motor"
-                maxForce 2000
+                maxForce 5000
               }
             ]
             endPoint Solid {
@@ -84,7 +86,7 @@ Robot {
                   translation 0 -0.08 0
                   children [
                     DEF leg_1 TouchSensor {
-                      translation 0 -0.6 0
+                      translation 0 -0.5 0
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -108,7 +110,7 @@ Robot {
                         metalness 0
                       }
                       geometry DEF inleg_1 Cylinder {
-                        height 1.18
+                        height 0.98
                         radius 0.015
                       }
                     }
@@ -196,12 +198,13 @@ Robot {
       ]
       endPoint Solid {
         translation -0.45 0 0.2
+        rotation 0 0 1 0
         children [
           DEF leg_2_linear_motor SliderJoint {
             jointParameters JointParameters {
               axis 0 1 0
-              minStop -0.5
-              dampingConstant 30
+              minStop -0.2
+              dampingConstant 5
               staticFriction 0.2
             }
             device [
@@ -210,7 +213,7 @@ Robot {
               }
               DEF leg_2_linear_motor LinearMotor {
                 name "leg_2_linear_motor"
-                maxForce 2000
+                maxForce 5000
               }
             ]
             endPoint Solid {
@@ -219,7 +222,7 @@ Robot {
                   translation 0 -0.08 0
                   children [
                     DEF leg_2 TouchSensor {
-                      translation 0 -0.6 0
+                      translation 0 -0.5 0
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -243,7 +246,7 @@ Robot {
                         metalness 0
                       }
                       geometry DEF inleg_1 Cylinder {
-                        height 1.18
+                        height 0.98
                         radius 0.015
                       }
                     }
@@ -331,12 +334,13 @@ Robot {
       ]
       endPoint Solid {
         translation 0.45 0 -0.2
+        rotation 0 0 1 0
         children [
           DEF leg_3_linear_motor SliderJoint {
             jointParameters JointParameters {
               axis 0 1 0
-              minStop -0.5
-              dampingConstant 30
+              minStop -0.2
+              dampingConstant 5
               staticFriction 0.2
             }
             device [
@@ -345,7 +349,7 @@ Robot {
               }
               DEF leg_3_linear_motor LinearMotor {
                 name "leg_3_linear_motor"
-                maxForce 2000
+                maxForce 5000
               }
             ]
             endPoint Solid {
@@ -354,7 +358,7 @@ Robot {
                   translation 0 -0.08 0
                   children [
                     DEF leg_3 TouchSensor {
-                      translation 0 -0.6 0
+                      translation 0 -0.5 0
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -378,7 +382,7 @@ Robot {
                         metalness 0
                       }
                       geometry DEF inleg_1 Cylinder {
-                        height 1.18
+                        height 0.98
                         radius 0.015
                       }
                     }
@@ -466,12 +470,13 @@ Robot {
       ]
       endPoint Solid {
         translation -0.45 0 -0.2
+        rotation 0 0 1 0
         children [
           DEF leg_4_linear_motor SliderJoint {
             jointParameters JointParameters {
               axis 0 1 0
-              minStop -0.5
-              dampingConstant 30
+              minStop -0.2
+              dampingConstant 5
               staticFriction 0.2
             }
             device [
@@ -480,7 +485,7 @@ Robot {
               }
               DEF leg_4_linear_motor LinearMotor {
                 name "leg_4_linear_motor"
-                maxForce 2000
+                maxForce 5000
               }
             ]
             endPoint Solid {
@@ -489,7 +494,7 @@ Robot {
                   translation 0 -0.08 0
                   children [
                     DEF leg_4 TouchSensor {
-                      translation 0 -0.6 0
+                      translation 0 -0.5 0
                       children [
                         Shape {
                           appearance PBRAppearance {
@@ -513,7 +518,7 @@ Robot {
                         metalness 0
                       }
                       geometry DEF inleg_4 Cylinder {
-                        height 1.18
+                        height 0.98
                         radius 0.015
                       }
                     }
@@ -590,6 +595,57 @@ Robot {
       }
       castShadows FALSE
     }
+    DEF Rear Solid {
+      translation -0.6 0 0
+      rotation 0 1 0 1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/asphalt.jpg"
+              ]
+            }
+            metalness 0
+          }
+          geometry Box {
+            size 0.4 0.1 0.3
+          }
+          castShadows FALSE
+        }
+      ]
+      name "solid(1)"
+      boundingObject USE body
+      physics Physics {
+        density -1
+        mass 2
+      }
+    }
+    DEF Front Solid {
+      translation 0.6 0 0
+      rotation 0 1 0 1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/asphalt.jpg"
+              ]
+            }
+            metalness 0
+          }
+          geometry Box {
+            size 0.4 0.1 0.3
+          }
+          castShadows FALSE
+        }
+      ]
+      boundingObject USE body
+      physics Physics {
+        density -1
+        mass 2
+      }
+    }
     InertialUnit {
       boundingObject USE body
       physics Physics {
@@ -603,7 +659,8 @@ Robot {
   boundingObject USE body
   physics Physics {
     density -1
-    mass 50
+    mass 26
   }
-  controller "trot"
+  controller "bound"
+  linearVelocity 3 0 0
 }

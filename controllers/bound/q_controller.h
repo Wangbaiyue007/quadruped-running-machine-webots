@@ -50,12 +50,8 @@ typedef struct
 {
   //------------------------------------------------------------------------参数区
   double spring_normal_length; //*弹簧原长
-  double d_width;              //躯宽
-  double d_length;             //躯长
-  double d_center;             //腿和重心距离
   double k_spring;             //弹簧刚度
   double F_thrust;             //THRUST推力
-  double F_shorten;            //收缩时的力
   double k_xz_dot;             //净加速度系数
   double r_threshold;          //状态机在脱离LOADING和进入UNLOADING状态时，腿长阈值判断
   double v;                    //机器人水平运动速度
@@ -63,7 +59,9 @@ typedef struct
   double k_pose_v;             //姿态控制时的kv
   double k_leg_p;              //腿部控制时的kp
   double k_leg_v;              //腿部控制时的kv
-  double k_equalize;           //平衡腿长时的k
+  double d_length;             //Half of the robot length
+  double d_width;              //Half of the robot width
+  double k_equalize;           //The k for equalizing forces of the two contacting legs
   //------------------------------------------------------------------------状态区
   eulerAngleTypeDef eulerAngle;     //欧拉角，Roll,Pitch,Yaw
   eulerAngleTypeDef eulerAngle_dot; //欧拉角的导数，Roll,Pitch,Yaw
@@ -103,7 +101,6 @@ typedef struct
   double z_dot;                     //机身z方向水平速度
   double x_dot_desire;              //机身x方向期望水平速度
   double z_dot_desire;              //机身z方向期望水平速度
-  double eulerAngle_dot_desire;     //期望角速度
   int system_ms;                    //从仿真启动开始的计时器
   stateMachineTypeDef stateMachine; //状态机
 } robotTypeDef;

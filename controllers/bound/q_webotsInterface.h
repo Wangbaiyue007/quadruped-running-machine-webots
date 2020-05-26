@@ -1,4 +1,5 @@
 /**********************************************************
+**             Email:wangbyyy@qq.com
 **---------------------------------------------------------
 **  Description: 此文件为 单腿跳跃机器人 仿真环境或硬件接口 头文件
 **  Version    : 
@@ -30,6 +31,10 @@ extern void set_spring_force1(double force);
 extern void set_spring_force2(double force);
 extern void set_spring_force3(double force);
 extern void set_spring_force4(double force);
+extern void set_spring_position1(double v);
+extern void set_spring_position2(double v);
+extern void set_spring_position3(double v);
+extern void set_spring_position4(double v);
 extern void set_X_torque1(double torque);
 extern void set_X_torque2(double torque);
 extern void set_X_torque3(double torque);
@@ -38,14 +43,10 @@ extern void set_Z_torque1(double torque);
 extern void set_Z_torque2(double torque);
 extern void set_Z_torque3(double torque);
 extern void set_Z_torque4(double torque);
-extern void set_X_velocity1(double v);
-extern void set_X_velocity2(double v);
-extern void set_X_velocity3(double v);
-extern void set_X_velocity4(double v);
-extern void set_Z_velocity1(double v);
-extern void set_Z_velocity2(double v);
-extern void set_Z_velocity3(double v);
-extern void set_Z_velocity4(double v);
+extern void set_Z_motor_angle1(double r);
+extern void set_Z_motor_angle2(double r);
+extern void set_Z_motor_angle3(double r);
+extern void set_Z_motor_angle4(double r);
 extern double get_spring_length1();
 extern double get_spring_length2();
 extern double get_spring_length3();

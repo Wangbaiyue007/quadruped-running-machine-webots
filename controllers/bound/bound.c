@@ -1,10 +1,10 @@
 /**********************************************************
 **             Email:wangbyyy@qq.com
 **---------------------------------------------------------
-**  Description: 此文件为 单腿跳跃机器人 逻辑 文件
+**  Description: 此文件为 单腿跳跃机器人 控制器 文件
 **  Version    : 
-**  Notes      : 使用键盘 ↑ ↓ ← → 控制机器人跳动方向
-**  Author     : 于宪元
+**  Notes      : 
+**  Author     : 于宪元 && Baiyue's team
 **********************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,5 +28,6 @@ int main(int argc, char **argv)
   };
   robot_free(); //free the memory
   wb_robot_cleanup();
+
   return 0;
 }
